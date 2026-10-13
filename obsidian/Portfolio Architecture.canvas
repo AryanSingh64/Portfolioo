@@ -1,0 +1,60 @@
+{
+  "nodes": [
+    {
+      "id": "root",
+      "type": "text",
+      "text": "# Aryan Portfolio\n**Creative Web Developer & AI Engineer**",
+      "x": 300,
+      "y": 50,
+      "width": 320,
+      "height": 100,
+      "color": "1"
+    },
+    {
+      "id": "hero",
+      "type": "text",
+      "text": "### 01 - Hero Section\n- Roman font (Cormorant Garamond)\n- Vertical Nav (+10px size)\n- Scroll-driven pin & scrub\n- Sliding abstract cards (/abs/)",
+      "x": 50,
+      "y": 250,
+      "width": 280,
+      "height": 180,
+      "color": "2"
+    },
+    {
+      "id": "about",
+      "type": "text",
+      "text": "### 02 - About & Journey\n- Nodes timeline: Born → School → College → Internship → Tech Exp → Projects → Now\n- Image cards: public/img1..4.png\n- GSAP scroll triggers",
+      "x": 450,
+      "y": 250,
+      "width": 280,
+      "height": 180,
+      "color": "3"
+    },
+    {
+      "id": "projects",
+      "type": "text",
+      "text": "### 03 - Projects Section\n- Directory navigation\n- Live interactive preview\n- Showcase landing pages",
+      "x": 150,
+      "y": 500,
+      "width": 260,
+      "height": 150,
+      "color": "4"
+    },
+    {
+      "id": "contact",
+      "type": "text",
+      "text": "### 04 - Contact Section\n- Large dynamic lettering\n- Interactive hover / color shifts\n- Direct inquiries CTA",
+      "x": 480,
+      "y": 500,
+      "width": 260,
+      "height": 150,
+      "color": "5"
+    }
+  ],
+  "edges": [
+    { "id": "e1", "fromNode": "root", "toNode": "hero", "fromSide": "bottom", "toSide": "top" },
+    { "id": "e2", "fromNode": "root", "toNode": "about", "fromSide": "bottom", "toSide": "top" },
+    { "id": "e3", "fromNode": "hero", "toNode": "projects", "fromSide": "bottom", "toSide": "top" },
+    { "id": "e4", "fromNode": "about", "toNode": "contact", "fromSide": "bottom", "toSide": "top" }
+  ]
+}

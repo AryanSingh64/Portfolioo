@@ -1,0 +1,209 @@
+.hero {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+/* ────────────────────────────────────────────
+   NAV  (right-side, vertical)
+   Original: 0.9rem → +10px ≈ 1.525rem
+──────────────────────────────────────────── */
+.nav {
+  position: absolute;
+  top: 50%;
+  right: 56px;
+  transform: translateY(-50%);
+  display: flex;
+  flex-direction: column;
+  gap: 26px;
+  z-index: 20;
+}
+
+.nav a {
+  font-family: 'Cinzel', serif;
+  font-size: 1.525rem;          /* was 0.9rem, +10px */
+  font-weight: 400;
+  letter-spacing: 0.18em;
+  color: rgba(255, 255, 255, 0.72);
+  text-decoration: none;
+  text-transform: capitalize;
+  transition: color 0.2s;
+  will-change: transform, opacity;
+}
+
+.nav a:hover {
+  color: #fff;
+}
+
+/* ────────────────────────────────────────────
+   CENTER  (name + role)
+──────────────────────────────────────────── */
+.center {
+  position: relative;
+  z-index: 10;
+  text-align: center;
+  margin-bottom: clamp(200px, 32vh, 320px);
+}
+
+/* Cormorant Garamond - elegant Roman, very readable */
+.name {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(5rem, 12vw, 10rem);   /* was 3.8–7.5rem, now much bigger */
+  font-weight: 300;
+  font-style: italic;
+  color: #fff;
+  letter-spacing: 0.12em;
+  line-height: 1;
+}
+
+.role {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.65rem, 1.1vw, 0.9rem);
+  font-weight: 300;
+  letter-spacing: 0.55em;
+  text-transform: uppercase;
+  color: #fff;
+  opacity: 0.45;
+  margin-top: 20px;
+}
+
+/* ────────────────────────────────────────────
+   BOXES TRACK - centered in section
+──────────────────────────────────────────── */
+.boxesTrack {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(16px, 2.5vw, 36px);
+
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* Box must be position:relative for next/image fill to work */
+.box {
+  position: relative;
+  width: clamp(160px, 22vw, 260px);
+  height: clamp(200px, 28vw, 340px);
+  flex-shrink: 0;
+  overflow: hidden;
+  will-change: transform;
+}
+
+/* ────────────────────────────────────────────
+   SCROLL CUE
+──────────────────────────────────────────── */
+.scrollCue {
+  position: absolute;
+  bottom: 36px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 20;
+}
+
+.scrollLine {
+  width: 1px;
+  height: 48px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.scrollDot {
+  width: 10px;
+  height: 10px;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  border-radius: 50%;
+  margin-top: 5px;
+  animation: dotPulse 2s ease-in-out infinite;
+}
+
+@keyframes dotPulse {
+  0%, 100% { opacity: 0.35; }
+  50%       { opacity: 1; }
+}
+
+.resumeNavBtn {
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  padding: 4px 12px;
+  border-radius: 9999px;
+  font-size: 1.1rem !important;
+  color: #fff !important;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(8px);
+}
+
+.resumeNavBtn:hover {
+  background: rgba(255, 255, 255, 0.18);
+  border-color: #fff;
+}
+
+/* ────────────────────────────────────────────
+   MOBILE RESPONSIVENESS (< 768px)
+──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .nav {
+    top: 20px;
+    left: 50%;
+    right: auto;
+    transform: translateX(-50%);
+    width: 94%;
+    max-width: 480px;
+    flex-direction: row;
+    gap: clamp(10px, 2.5vw, 18px);
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .nav a {
+    font-size: 0.85rem;
+    letter-spacing: 0.1em;
+  }
+
+  .resumeNavBtn {
+    font-size: 0.8rem !important;
+    padding: 3px 10px;
+  }
+
+  .center {
+    margin-bottom: clamp(140px, 20vh, 220px);
+    padding: 0 16px;
+  }
+
+  .name {
+    font-size: clamp(3.4rem, 15vw, 5.5rem);
+  }
+
+  .role {
+    font-size: clamp(0.58rem, 2.4vw, 0.72rem);
+    letter-spacing: 0.28em;
+    margin-top: 14px;
+  }
+
+  .boxesTrack {
+    gap: 12px;
+  }
+
+  .box {
+    width: clamp(120px, 28vw, 170px);
+    height: clamp(160px, 38vw, 230px);
+  }
+
+  .scrollCue {
+    bottom: 20px;
+  }
+}
+

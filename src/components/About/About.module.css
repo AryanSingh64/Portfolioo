@@ -1,0 +1,493 @@
+.about {
+  position: relative;
+  width: 100vw;
+  height: 100vh;
+  overflow: hidden;
+  background: #0a0a0a;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ────────────────────────────────────────────
+   ROTATED IMAGE WRAPPER
+──────────────────────────────────────────── */
+.imageWrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 100vh;
+  height: 100vw;
+  transform: translate(-50%, -50%) rotate(90deg);
+  transform-origin: center center;
+  will-change: transform;
+}
+
+.image {
+  object-fit: cover;
+}
+
+/* ────────────────────────────────────────────
+   SEAMLESS TRANSITIONS
+──────────────────────────────────────────── */
+.topBlend {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 30vh;
+  min-height: 180px;
+  background: linear-gradient(
+    180deg,
+    #0a0a0a 0%,
+    rgba(10, 10, 10, 0.9) 25%,
+    rgba(10, 10, 10, 0.45) 65%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
+.sideBlend {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    ellipse at center,
+    transparent 55%,
+    rgba(10, 10, 10, 0.65) 100%
+  );
+  pointer-events: none;
+  z-index: 4;
+}
+
+.bottomBlend {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 28vh;
+  min-height: 160px;
+  background: linear-gradient(
+    0deg,
+    #0a0a0a 0%,
+    rgba(10, 10, 10, 0.85) 30%,
+    transparent 100%
+  );
+  pointer-events: none;
+  z-index: 5;
+}
+
+/* ────────────────────────────────────────────
+   CENTERED SECTION HEADER (PURE UNBOXED TYPOGRAPHY)
+──────────────────────────────────────────── */
+.sectionHeader {
+  position: absolute;
+  top: 40px;
+  left: 50%;
+  transform: translateX(-50%);
+  text-align: center;
+  z-index: 12;
+  pointer-events: none;
+  width: 100%;
+  max-width: 800px;
+  padding: 0 20px;
+  box-sizing: border-box;
+}
+
+.badge {
+  display: inline-block;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.5);
+  margin-bottom: 6px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+}
+
+.title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2.2rem, 4vw, 3.4rem);
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.08em;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+  text-shadow: 0 4px 24px rgba(0, 0, 0, 0.95), 0 2px 8px rgba(0, 0, 0, 0.9);
+}
+
+.hint {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+  margin-top: 6px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.95);
+}
+
+/* ────────────────────────────────────────────
+   ROADMAP LAYER & WINDING ROADWAY
+──────────────────────────────────────────── */
+.roadmapLayer {
+  position: absolute;
+  inset: 0;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.svgOverlay {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 8;
+}
+
+/* Winding Highway Track (Inspo Image 1 & 2) */
+.roadOuterGlow {
+  fill: none;
+  stroke: rgba(0, 0, 0, 0.85);
+  stroke-width: 24;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.roadSurface {
+  fill: none;
+  stroke: #181a24;
+  stroke-width: 14;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+}
+
+.roadCenterLine {
+  fill: none;
+  stroke: #ffffff;
+  stroke-width: 2;
+  stroke-dasharray: 6 8;
+  stroke-linecap: round;
+  vector-effect: non-scaling-stroke;
+  filter: drop-shadow(0 0 6px #ffffff);
+}
+
+/* Vertical Connector Stem Pins */
+.pinStem {
+  stroke: rgba(255, 255, 255, 0.55);
+  stroke-width: 2;
+  stroke-dasharray: 4 4;
+  vector-effect: non-scaling-stroke;
+}
+
+.roadAnchorDot {
+  fill: #ffffff;
+  stroke: #181a24;
+  stroke-width: 2;
+  filter: drop-shadow(0 0 6px #ffffff);
+}
+
+/* ────────────────────────────────────────────
+   PIN BADGES & CARDS (ALTERNATING UP/DOWN)
+──────────────────────────────────────────── */
+.milestonePin {
+  position: absolute;
+  transform: translate(-50%, -50%);
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  pointer-events: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  outline: none;
+  z-index: 15;
+  transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.milestonePin:hover {
+  transform: translate(-50%, -50%) scale(1.12);
+}
+
+/* Circular Icon Badge */
+.pinBadge {
+  position: relative;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(18, 20, 28, 0.92);
+  border: 1.5px solid rgba(255, 255, 255, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow:
+    0 8px 24px rgba(0, 0, 0, 0.8),
+    0 0 12px rgba(255, 255, 255, 0.25);
+  color: #ffffff;
+  flex-shrink: 0;
+  transition: border-color 0.25s, box-shadow 0.25s, background-color 0.25s;
+}
+
+.milestonePin:hover .pinBadge {
+  border-color: #60a5fa;
+  background: rgba(26, 32, 48, 0.95);
+  box-shadow:
+    0 8px 30px rgba(0, 0, 0, 0.9),
+    0 0 20px rgba(96, 165, 250, 0.8);
+}
+
+.iconSvg {
+  width: 20px;
+  height: 20px;
+  stroke: #ffffff;
+}
+
+.badgeNumber {
+  position: absolute;
+  top: -6px;
+  right: -6px;
+  background: #ffffff;
+  color: #000000;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.58rem;
+  font-weight: 700;
+  padding: 1px 5px;
+  border-radius: 10px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.6);
+}
+
+/* Beside Card with Title & Era */
+.pinCard {
+  background: rgba(14, 16, 22, 0.85);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 6px;
+  padding: 6px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.7);
+  white-space: nowrap;
+  transition: border-color 0.25s, background-color 0.25s;
+}
+
+.milestonePin:hover .pinCard {
+  border-color: rgba(255, 255, 255, 0.6);
+  background: rgba(20, 24, 34, 0.95);
+}
+
+.pinLabel {
+  font-family: 'Cinzel', serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.1em;
+  color: #ffffff;
+  text-transform: capitalize;
+}
+
+.pinPeriod {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+/* ────────────────────────────────────────────
+   MODAL DETAIL POPUP
+──────────────────────────────────────────── */
+.modalBackdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  z-index: 100;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+
+.modalCard {
+  position: relative;
+  width: 100%;
+  max-width: 520px;
+  background: rgba(16, 17, 22, 0.96);
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 6px;
+  padding: clamp(24px, 4vw, 36px);
+  box-shadow: 0 24px 60px rgba(0, 0, 0, 0.9);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.modalHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  padding-bottom: 12px;
+}
+
+.modalTag {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.65rem;
+  letter-spacing: 0.3em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  font-weight: 500;
+}
+
+/* ESC button */
+.closeBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: rgba(255, 255, 255, 0.8);
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0.15em;
+  padding: 4px 12px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+}
+
+.closeBtn:hover {
+  border-color: #fff;
+  color: #fff;
+  background: rgba(255, 255, 255, 0.14);
+}
+
+.modalBody {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modalTitle {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem;
+  font-weight: 300;
+  font-style: italic;
+  color: #fff;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.modalPeriod {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.4);
+  margin: 0;
+}
+
+.modalNote {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.82rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.6;
+  margin: 6px 0 0 0;
+}
+
+.contentPlaceholder {
+  margin-top: 14px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.02);
+  border: 1px dashed rgba(255, 255, 255, 0.08);
+  border-radius: 4px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.placeholderLine {
+  width: 80%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.07);
+  border-radius: 2px;
+}
+
+.placeholderLineShort {
+  width: 50%;
+  height: 4px;
+  background: rgba(255, 255, 255, 0.04);
+  border-radius: 2px;
+}
+
+.modalFooter {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 14px;
+}
+
+.dismissBtn {
+  background: transparent;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: #fff;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.72rem;
+  letter-spacing: 0.12em;
+  padding: 6px 18px;
+  border-radius: 3px;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.dismissBtn:hover {
+  background: rgba(255, 255, 255, 0.12);
+  border-color: #fff;
+}
+
+/* ────────────────────────────────────────────
+   MOBILE RESPONSIVENESS (< 768px)
+──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .pinBadge {
+    width: 36px;
+    height: 36px;
+  }
+
+  .iconSvg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .badgeNumber {
+    font-size: 0.52rem;
+    padding: 1px 4px;
+    top: -4px;
+    right: -4px;
+  }
+
+  .cardLabel {
+    font-size: 0.65rem;
+    letter-spacing: 0.08em;
+  }
+
+  .cardPeriod {
+    font-size: 0.52rem;
+  }
+
+  .modalCard {
+    max-width: 92vw;
+    padding: 20px 18px;
+    gap: 14px;
+  }
+
+  .modalTitle {
+    font-size: 1.7rem;
+  }
+
+  .modalNote {
+    font-size: 0.78rem;
+  }
+}
+

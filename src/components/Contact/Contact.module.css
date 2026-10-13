@@ -1,0 +1,438 @@
+.contact {
+  position: relative;
+  width: 100vw;
+  min-height: 100vh;
+  background: #08080a;
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  box-sizing: border-box;
+  padding: 80px 24px clamp(160px, 25vh, 240px) 24px;
+}
+
+.cloudCanvasBg {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  display: block;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ────────────────────────────────────────────
+   1. SUBTLE MONOCHROME AMBIENT GLOW
+──────────────────────────────────────────── */
+.monoGlow {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 50% 45%,
+    rgba(255, 255, 255, 0.05) 0%,
+    rgba(255, 255, 255, 0.02) 40%,
+    transparent 70%
+  );
+  pointer-events: none;
+}
+
+/* ────────────────────────────────────────────
+   2. MAIN CENTER CONTAINER
+──────────────────────────────────────────── */
+.container {
+  position: relative;
+  z-index: 5;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 1000px;
+  width: 100%;
+}
+
+.badgeRow {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.badgeStar {
+  width: 12px;
+  height: 12px;
+  color: #ffffff;
+  filter: drop-shadow(0 0 6px #ffffff);
+}
+
+.badge {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.68rem;
+  letter-spacing: 0.38em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.45);
+}
+
+/* ────────────────────────────────────────────
+   3. ORNATE CALLIGRAPHY WITH DANGLING CHARMS
+──────────────────────────────────────────── */
+.contactLink {
+  text-decoration: none;
+  cursor: pointer;
+  display: inline-block;
+  outline: none;
+  padding: 10px 20px;
+}
+
+.scriptHeading {
+  font-family: 'Pinyon Script', cursive;
+  font-size: clamp(4.5rem, 13vw, 10rem);
+  font-weight: 400;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.1;
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
+  gap: clamp(16px, 3.5vw, 42px);
+  text-shadow:
+    0 0 20px rgba(255, 255, 255, 0.5),
+    0 0 50px rgba(255, 255, 255, 0.25);
+  transition: gap 0.45s cubic-bezier(0.16, 1, 0.3, 1),
+              text-shadow 0.35s ease;
+  user-select: none;
+}
+
+.scriptWord {
+  display: inline-flex;
+  align-items: baseline;
+}
+
+.charContainer {
+  position: relative;
+  display: inline-block;
+}
+
+/* Delicate hanging thread with tiny heart charm */
+.dangle {
+  position: absolute;
+  top: 36%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: none;
+  z-index: 2;
+}
+
+.dangleThread {
+  width: 1px;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(255, 255, 255, 0.95) 100%
+  );
+  display: block;
+}
+
+.dangleHeart {
+  font-size: 0.16em;
+  color: #ffffff;
+  line-height: 1;
+  filter: drop-shadow(0 0 6px #ffffff);
+  margin-top: -2px;
+  display: inline-block;
+  transform-origin: top center;
+  animation: charmSway 3s ease-in-out infinite;
+}
+
+@keyframes charmSway {
+  0%, 100% {
+    transform: rotate(0deg);
+  }
+  50% {
+    transform: rotate(8deg);
+  }
+}
+
+/* Hover: Contraction & intense white star glow */
+.contactLink:hover .scriptHeading {
+  gap: clamp(6px, 1.5vw, 16px); /* Contraction */
+  text-shadow:
+    0 0 24px rgba(255, 255, 255, 0.9),
+    0 0 60px rgba(255, 255, 255, 0.8),
+    0 0 100px rgba(255, 255, 255, 0.5);
+}
+
+.contactLink:hover .dangleHeart {
+  color: #ffffff;
+  filter: drop-shadow(0 0 10px #ffffff);
+}
+
+/* ────────────────────────────────────────────
+   4. SUBTITLE & SOCIALS
+──────────────────────────────────────────── */
+.tagline {
+  font-family: 'Montserrat', sans-serif;
+  font-size: clamp(0.82rem, 1.3vw, 0.98rem);
+  font-weight: 300;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: 0.05em;
+  margin: 20px 0 0 0;
+  max-width: 540px;
+  line-height: 1.6;
+}
+
+.socials {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 32px;
+}
+
+.socialLink {
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.12em;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s ease, transform 0.2s ease;
+}
+
+.socialLink:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.sep {
+  color: rgba(255, 255, 255, 0.2);
+  font-size: 0.75rem;
+}
+
+/* ────────────────────────────────────────────
+   5. BLACK & WHITE LIQUID WAVE AT THE BOTTOM
+──────────────────────────────────────────── */
+.bottomWaveWrapper {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: clamp(140px, 22vh, 220px);
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 3;
+}
+
+.bottomWaveSvg {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+.whiteCrestLine {
+  filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 16px rgba(255, 255, 255, 0.8));
+}
+
+/* ────────────────────────────────────────────
+   6. SHINY DIAMOND STARS ALONG THE BOTTOM WAVE
+──────────────────────────────────────────── */
+.shinyStarsLayer {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.shinyStar {
+  position: absolute;
+  color: #ffffff;
+  filter: drop-shadow(0 0 8px #ffffff) drop-shadow(0 0 18px rgba(255, 255, 255, 0.9));
+  animation: starGlisten 4s ease-in-out infinite;
+}
+
+.starPos1 {
+  width: 32px;
+  height: 32px;
+  bottom: 85px;
+  left: 8%;
+  animation-delay: 0s;
+}
+
+.starPos2 {
+  width: 18px;
+  height: 18px;
+  bottom: 120px;
+  left: 24%;
+  animation-delay: 1.2s;
+}
+
+.starPos3 {
+  width: 38px;
+  height: 38px;
+  bottom: 60px;
+  left: 45%;
+  animation-delay: 2.5s;
+}
+
+.starPos4 {
+  width: 22px;
+  height: 22px;
+  bottom: 110px;
+  right: 32%;
+  animation-delay: 0.8s;
+}
+
+.starPos5 {
+  width: 36px;
+  height: 36px;
+  bottom: 75px;
+  right: 14%;
+  animation-delay: 2.1s;
+}
+
+.starPos6 {
+  width: 16px;
+  height: 16px;
+  bottom: 135px;
+  right: 5%;
+  animation-delay: 3.3s;
+}
+
+@keyframes starGlisten {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg) scale(0.9);
+    opacity: 0.6;
+  }
+  50% {
+    transform: translateY(-8px) rotate(15deg) scale(1.25);
+    opacity: 1;
+    filter: drop-shadow(0 0 12px #ffffff) drop-shadow(0 0 24px #ffffff);
+  }
+}
+
+/* ────────────────────────────────────────────
+   DIRECT CONTACT PILLS & RESUME BUTTON
+──────────────────────────────────────────── */
+.directContactRow {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 14px;
+  flex-wrap: wrap;
+  margin-top: 14px;
+}
+
+.directPill {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.78rem;
+  letter-spacing: 0.06em;
+  color: rgba(255, 255, 255, 0.75);
+  text-decoration: none;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 6px 14px;
+  border-radius: 9999px;
+  backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+}
+
+.directPill:hover {
+  color: #ffffff;
+  border-color: rgba(255, 255, 255, 0.4);
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.pillIcon {
+  width: 14px;
+  height: 14px;
+  color: #60a5fa;
+}
+
+.actionRow {
+  margin-top: 24px;
+}
+
+.resumeDownloadBtn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.8rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: #000000;
+  background: #ffffff;
+  text-decoration: none;
+  padding: 10px 22px;
+  border-radius: 9999px;
+  box-shadow: 0 4px 20px rgba(255, 255, 255, 0.25);
+  transition: all 0.25s ease;
+}
+
+.resumeDownloadBtn .pillIcon {
+  color: #000000;
+}
+
+.resumeDownloadBtn:hover {
+  background: rgba(255, 255, 255, 0.9);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 30px rgba(255, 255, 255, 0.4);
+}
+
+/* ────────────────────────────────────────────
+   RESPONSIVE (< 768px)
+──────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .contact {
+    padding: 60px 16px clamp(140px, 20vh, 180px) 16px;
+  }
+
+  .scriptHeading {
+    font-size: clamp(3rem, 15vw, 4.8rem);
+    flex-direction: row;
+    gap: 12px;
+  }
+
+  .directContactRow {
+    flex-direction: column;
+    gap: 10px;
+    width: 100%;
+  }
+
+  .directPill {
+    font-size: 0.72rem;
+    padding: 6px 12px;
+  }
+
+  .tagline {
+    font-size: 0.78rem;
+    margin-top: 14px;
+    padding: 0 12px;
+  }
+
+  .actionRow {
+    margin-top: 18px;
+  }
+
+  .resumeDownloadBtn {
+    font-size: 0.75rem;
+    padding: 8px 18px;
+  }
+
+  .socials {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    margin-top: 24px;
+  }
+
+  .bottomWaveWrapper {
+    height: 110px;
+  }
+}
+
